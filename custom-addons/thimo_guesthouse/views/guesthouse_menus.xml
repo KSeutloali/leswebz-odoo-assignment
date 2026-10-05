@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_guesthouse_root" name="Guest House" sequence="10" action="action_bookings" groups="thimo_guesthouse.group_guesthouse_receptionist"/>
+    <menuitem id="menu_bookings" name="Bookings" parent="menu_guesthouse_root" action="action_bookings" sequence="10" groups="thimo_guesthouse.group_guesthouse_receptionist"/>
+    <menuitem id="menu_rooms" name="Rooms" parent="menu_guesthouse_root" action="action_rooms" sequence="20" groups="thimo_guesthouse.group_guesthouse_receptionist"/>
+    <menuitem id="menu_guests" name="Guests" parent="menu_guesthouse_root" action="action_guests" sequence="30" groups="thimo_guesthouse.group_guesthouse_receptionist"/>
+    <menuitem id="menu_guesthouse_configuration" name="Configuration" parent="menu_guesthouse_root" sequence="40" groups="thimo_guesthouse.group_guesthouse_manager"/>
+    <menuitem id="menu_room_types" name="Room Types" parent="menu_guesthouse_configuration" action="action_room_types" sequence="10" groups="thimo_guesthouse.group_guesthouse_manager"/>
+</odoo>

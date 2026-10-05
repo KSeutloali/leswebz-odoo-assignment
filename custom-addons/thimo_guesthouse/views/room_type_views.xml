@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_room_type_list" model="ir.ui.view">
+        <field name="name">thimo.guesthouse.room.type.list</field>
+        <field name="model">thimo.guesthouse.room.type</field>
+        <field name="arch" type="xml">
+            <list string="Room Types">
+                <field name="name"/>
+                <field name="capacity"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="default_rate" string="Default Nightly Rate" widget="monetary"/>
+                <field name="description" optional="hide"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_room_type_form" model="ir.ui.view">
+        <field name="name">thimo.guesthouse.room.type.form</field>
+        <field name="model">thimo.guesthouse.room.type</field>
+        <field name="arch" type="xml">
+            <form string="Room Type">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <field name="active" invisible="True"/>
+                    <group>
+                        <field name="name"/>
+                        <field name="capacity"/>
+                        <field name="currency_id" invisible="True"/>
+                        <field name="default_rate" string="Default Nightly Rate" widget="monetary"/>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Describe this room type..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_room_type_search" model="ir.ui.view">
+        <field name="name">thimo.guesthouse.room.type.search</field>
+        <field name="model">thimo.guesthouse.room.type</field>
+        <field name="arch" type="xml">
+            <search string="Room Types">
+                <field name="name"/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_room_types" model="ir.actions.act_window">
+        <field name="name">Room Types</field>
+        <field name="res_model">thimo.guesthouse.room.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_room_type_search"/>
+        <field name="path">guesthouse-room-types</field>
+        <field name="help" type="html"><p class="o_view_nocontent_smiling_face">Create a room type with its capacity and default nightly rate.</p></field>
+    </record>
+</odoo>

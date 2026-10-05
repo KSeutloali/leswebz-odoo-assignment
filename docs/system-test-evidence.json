@@ -1,0 +1,2105 @@
+{
+  "verified_on": "2026-10-05",
+  "completed_at": {
+    "current_time": "2026-10-05 13:41:09 UTC"
+  },
+  "environment": {
+    "odoo": "19.0-20260926",
+    "postgresql": "16.15",
+    "compose": "2.32.4",
+    "services": [
+      "db",
+      "odoo"
+    ],
+    "http": "127.0.0.1:8069"
+  },
+  "method": {
+    "guesthouse": "Fresh live ORM transitions and negative tests; test transaction rolled back. Browser reads and unsaved Draft form only.",
+    "bakery": "Read-only revalidation of existing completed production, purchase, receipt and POS chains and their actual stock/payment records. No additional bakery transactions created in this pass.",
+    "browser": "Local headless Chrome with private credentials read from ignored file; credential values omitted."
+  },
+  "restart": {
+    "before": {
+      "current_time": "2026-10-05 12:49:56 UTC"
+    },
+    "after": {
+      "current_time": "2026-10-05 12:52:08 UTC"
+    },
+    "commands": [
+      "docker compose down",
+      "docker compose up -d --wait --wait-timeout 180"
+    ],
+    "house_before": [
+      {
+        "table": "thimo_guesthouse_room_type",
+        "rows": 3,
+        "checksum": "c443448721b1db84f2d4df1defe6ec02"
+      },
+      {
+        "table": "thimo_guesthouse_room",
+        "rows": 5,
+        "checksum": "10bc318b3a75dbe4f2b8952553a4528d"
+      },
+      {
+        "table": "thimo_guesthouse_booking",
+        "rows": 4,
+        "checksum": "4dccf4a35fa8e4a117b5377dbf78fd9d"
+      },
+      {
+        "table": "res_partner",
+        "rows": 9,
+        "checksum": "c663004ad1e1835048f88e7f9891734b"
+      }
+    ],
+    "house_after": [
+      {
+        "table": "thimo_guesthouse_room_type",
+        "rows": 3,
+        "checksum": "c443448721b1db84f2d4df1defe6ec02"
+      },
+      {
+        "table": "thimo_guesthouse_room",
+        "rows": 5,
+        "checksum": "10bc318b3a75dbe4f2b8952553a4528d"
+      },
+      {
+        "table": "thimo_guesthouse_booking",
+        "rows": 4,
+        "checksum": "4dccf4a35fa8e4a117b5377dbf78fd9d"
+      },
+      {
+        "table": "res_partner",
+        "rows": 9,
+        "checksum": "c663004ad1e1835048f88e7f9891734b"
+      }
+    ],
+    "bakery_before": [
+      {
+        "table": "product_template",
+        "rows": 7,
+        "checksum": "6f8822a408730dc705056c67cba7512a"
+      },
+      {
+        "table": "product_product",
+        "rows": 7,
+        "checksum": "16690141ae2153f9f313241ebb54cac7"
+      },
+      {
+        "table": "res_partner",
+        "rows": 6,
+        "checksum": "3739d7f620206ffbde97dc7598ac12f1"
+      },
+      {
+        "table": "mrp_bom",
+        "rows": 1,
+        "checksum": "635b7914897ee56c5360f5fc3b707706"
+      },
+      {
+        "table": "mrp_bom_line",
+        "rows": 3,
+        "checksum": "c9372ef4f3249a505c104b30dc6e9483"
+      },
+      {
+        "table": "mrp_production",
+        "rows": 1,
+        "checksum": "788de3633d43c53afb4e0cf6bd064a08"
+      },
+      {
+        "table": "purchase_order",
+        "rows": 1,
+        "checksum": "681f98ea3eefa48524c24013b662d41d"
+      },
+      {
+        "table": "purchase_order_line",
+        "rows": 1,
+        "checksum": "ca5513ad53bff98b36bf32a6fa39db0c"
+      },
+      {
+        "table": "stock_picking",
+        "rows": 3,
+        "checksum": "201500a36daa5d320c90365657b7b37a"
+      },
+      {
+        "table": "stock_move",
+        "rows": 10,
+        "checksum": "8cae848815e7f3a19ba78cb26095dcc3"
+      },
+      {
+        "table": "stock_move_line",
+        "rows": 10,
+        "checksum": "94906dd1eaeb8fcaea185930d22d9144"
+      },
+      {
+        "table": "stock_quant",
+        "rows": 15,
+        "checksum": "59df664bcdca38ac5ed3fd0c036c3bed"
+      },
+      {
+        "table": "pos_config",
+        "rows": 1,
+        "checksum": "3af2a382826e66bc49c2a90c42d7a59c"
+      },
+      {
+        "table": "pos_session",
+        "rows": 1,
+        "checksum": "2df4e7a807a6c10b39b5cd27734e4d77"
+      },
+      {
+        "table": "pos_order",
+        "rows": 2,
+        "checksum": "b498800cab339c87a0f8d6448df861c6"
+      },
+      {
+        "table": "pos_order_line",
+        "rows": 2,
+        "checksum": "6f55793aa7d0189eaa6873d0bf31fd0e"
+      },
+      {
+        "table": "pos_payment",
+        "rows": 2,
+        "checksum": "1de63d91bc6aa3a827c1d9c65eb5c389"
+      },
+      {
+        "table": "account_move",
+        "rows": 2,
+        "checksum": "52e9258d87457eccfae3fae49b9e64ad"
+      },
+      {
+        "table": "account_move_line",
+        "rows": 4,
+        "checksum": "9ebd7f8942552cf196d26cdb41262ace"
+      }
+    ],
+    "bakery_after": [
+      {
+        "table": "product_template",
+        "rows": 7,
+        "checksum": "6f8822a408730dc705056c67cba7512a"
+      },
+      {
+        "table": "product_product",
+        "rows": 7,
+        "checksum": "16690141ae2153f9f313241ebb54cac7"
+      },
+      {
+        "table": "res_partner",
+        "rows": 6,
+        "checksum": "3739d7f620206ffbde97dc7598ac12f1"
+      },
+      {
+        "table": "mrp_bom",
+        "rows": 1,
+        "checksum": "635b7914897ee56c5360f5fc3b707706"
+      },
+      {
+        "table": "mrp_bom_line",
+        "rows": 3,
+        "checksum": "c9372ef4f3249a505c104b30dc6e9483"
+      },
+      {
+        "table": "mrp_production",
+        "rows": 1,
+        "checksum": "788de3633d43c53afb4e0cf6bd064a08"
+      },
+      {
+        "table": "purchase_order",
+        "rows": 1,
+        "checksum": "681f98ea3eefa48524c24013b662d41d"
+      },
+      {
+        "table": "purchase_order_line",
+        "rows": 1,
+        "checksum": "ca5513ad53bff98b36bf32a6fa39db0c"
+      },
+      {
+        "table": "stock_picking",
+        "rows": 3,
+        "checksum": "201500a36daa5d320c90365657b7b37a"
+      },
+      {
+        "table": "stock_move",
+        "rows": 10,
+        "checksum": "8cae848815e7f3a19ba78cb26095dcc3"
+      },
+      {
+        "table": "stock_move_line",
+        "rows": 10,
+        "checksum": "94906dd1eaeb8fcaea185930d22d9144"
+      },
+      {
+        "table": "stock_quant",
+        "rows": 15,
+        "checksum": "59df664bcdca38ac5ed3fd0c036c3bed"
+      },
+      {
+        "table": "pos_config",
+        "rows": 1,
+        "checksum": "3af2a382826e66bc49c2a90c42d7a59c"
+      },
+      {
+        "table": "pos_session",
+        "rows": 1,
+        "checksum": "2df4e7a807a6c10b39b5cd27734e4d77"
+      },
+      {
+        "table": "pos_order",
+        "rows": 2,
+        "checksum": "b498800cab339c87a0f8d6448df861c6"
+      },
+      {
+        "table": "pos_order_line",
+        "rows": 2,
+        "checksum": "6f55793aa7d0189eaa6873d0bf31fd0e"
+      },
+      {
+        "table": "pos_payment",
+        "rows": 2,
+        "checksum": "1de63d91bc6aa3a827c1d9c65eb5c389"
+      },
+      {
+        "table": "account_move",
+        "rows": 2,
+        "checksum": "52e9258d87457eccfae3fae49b9e64ad"
+      },
+      {
+        "table": "account_move_line",
+        "rows": 4,
+        "checksum": "9ebd7f8942552cf196d26cdb41262ace"
+      }
+    ],
+    "volumes_before": [
+      {
+        "CreatedAt": "2026-10-05T08:49:01Z",
+        "Driver": "local",
+        "Labels": {
+          "com.docker.compose.config-hash": "2b7b7bfe75eb18c79e2d76005a05f4bcd0325b609ff1e5858f9c85a185d34e16",
+          "com.docker.compose.project": "leswebz-odoo-assignment",
+          "com.docker.compose.version": "2.32.4",
+          "com.docker.compose.volume": "postgres_data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/leswebz-odoo-assignment_postgres_data/_data",
+        "Name": "leswebz-odoo-assignment_postgres_data",
+        "Options": null,
+        "Scope": "local"
+      },
+      {
+        "CreatedAt": "2026-10-05T08:49:01Z",
+        "Driver": "local",
+        "Labels": {
+          "com.docker.compose.config-hash": "2b2533a4cd16c8c6e5d60603b47957de0c37662d0f1e0574d495ad8fe62d9d8a",
+          "com.docker.compose.project": "leswebz-odoo-assignment",
+          "com.docker.compose.version": "2.32.4",
+          "com.docker.compose.volume": "odoo_data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/leswebz-odoo-assignment_odoo_data/_data",
+        "Name": "leswebz-odoo-assignment_odoo_data",
+        "Options": null,
+        "Scope": "local"
+      }
+    ],
+    "volumes_after": [
+      {
+        "CreatedAt": "2026-10-05T08:49:01Z",
+        "Driver": "local",
+        "Labels": {
+          "com.docker.compose.config-hash": "2b7b7bfe75eb18c79e2d76005a05f4bcd0325b609ff1e5858f9c85a185d34e16",
+          "com.docker.compose.project": "leswebz-odoo-assignment",
+          "com.docker.compose.version": "2.32.4",
+          "com.docker.compose.volume": "postgres_data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/leswebz-odoo-assignment_postgres_data/_data",
+        "Name": "leswebz-odoo-assignment_postgres_data",
+        "Options": null,
+        "Scope": "local"
+      },
+      {
+        "CreatedAt": "2026-10-05T08:49:01Z",
+        "Driver": "local",
+        "Labels": {
+          "com.docker.compose.config-hash": "2b2533a4cd16c8c6e5d60603b47957de0c37662d0f1e0574d495ad8fe62d9d8a",
+          "com.docker.compose.project": "leswebz-odoo-assignment",
+          "com.docker.compose.version": "2.32.4",
+          "com.docker.compose.volume": "odoo_data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/leswebz-odoo-assignment_odoo_data/_data",
+        "Name": "leswebz-odoo-assignment_odoo_data",
+        "Options": null,
+        "Scope": "local"
+      }
+    ],
+    "filestore_before": {
+      "thimo_guesthouse": {
+        "files": 17,
+        "checksum": "236029a4e3ee5a640f7b0a9fa8b5d91dd16dd40b844b301de18e5bd14d8197bf"
+      },
+      "vishanti_bakery": {
+        "files": 471,
+        "checksum": "c4af99caeee33b56f6aea72fa70b3d837bf606db10edb7928f179593abcfc3c2"
+      }
+    },
+    "filestore_after": {
+      "thimo_guesthouse": {
+        "files": 17,
+        "checksum": "236029a4e3ee5a640f7b0a9fa8b5d91dd16dd40b844b301de18e5bd14d8197bf"
+      },
+      "vishanti_bakery": {
+        "files": 471,
+        "checksum": "c4af99caeee33b56f6aea72fa70b3d837bf606db10edb7928f179593abcfc3c2"
+      }
+    },
+    "mounts_equal_when_order_ignored": true
+  },
+  "requirements": [
+    {
+      "test": "Compose configuration",
+      "expected": "Valid",
+      "actual": "docker compose config --quiet exited 0",
+      "result": "PASS"
+    },
+    {
+      "test": "PostgreSQL startup",
+      "expected": "Healthy and accepting connections",
+      "actual": "PostgreSQL 16.15 healthy; queries succeeded",
+      "result": "PASS"
+    },
+    {
+      "test": "Odoo startup",
+      "expected": "Healthy web server",
+      "actual": "Odoo 19.0-20260926 healthy; both registries loaded",
+      "result": "PASS"
+    },
+    {
+      "test": "localhost:8069",
+      "expected": "HTTP 200",
+      "actual": "Database selector HTTP 200; health status pass, db_server_status true",
+      "result": "PASS"
+    },
+    {
+      "test": "Custom addon mount",
+      "expected": "Host source mounted readonly at /mnt/extra-addons",
+      "actual": "Readonly bind confirmed; host/container manifest SHA256 equal",
+      "result": "PASS"
+    },
+    {
+      "test": "Guest House module loads",
+      "expected": "Installed module, working model imports and views",
+      "actual": "19.0.1.2.0 installed; live ORM and browser checks passed",
+      "result": "PASS"
+    },
+    {
+      "test": "Developer Mode",
+      "expected": "Enabled in actual browser",
+      "actual": "odoo.debug = 1; developer menu rendered",
+      "result": "PASS"
+    },
+    {
+      "test": "Exactly two Odoo databases",
+      "expected": [
+        "thimo_guesthouse",
+        "vishanti_bakery"
+      ],
+      "actual": [
+        "thimo_guesthouse",
+        "vishanti_bakery"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Independent database identities",
+      "expected": "Different PostgreSQL OIDs and Odoo UUIDs",
+      "actual": "OIDs 16397 / 19646; UUIDs differ",
+      "result": "PASS"
+    },
+    {
+      "test": "Guest House isolation",
+      "expected": "Custom functionality only in guest-house database",
+      "actual": "Installed in house; uninstalled and no custom booking table in bakery",
+      "result": "PASS"
+    },
+    {
+      "test": "Bakery applications",
+      "expected": "stock, purchase, mrp, point_of_sale installed",
+      "actual": "All four installed; LGPL-3; no Enterprise modules",
+      "result": "PASS"
+    },
+    {
+      "test": "Safe container restart",
+      "expected": "down then up, retaining volumes",
+      "actual": "docker compose down; docker compose up -d --wait --wait-timeout 180; both healthy",
+      "result": "PASS"
+    },
+    {
+      "test": "Databases reopen after restart",
+      "expected": "Both present and usable",
+      "actual": "Both PostgreSQL identities retained; both browser logins succeeded",
+      "result": "PASS"
+    },
+    {
+      "test": "Guest House records persist",
+      "expected": "Identical counts and content",
+      "actual": "All 4 sampled tables unchanged; 3 types / 5 rooms / 4 bookings / 4 guest Contacts",
+      "result": "PASS"
+    },
+    {
+      "test": "Bakery configuration and history persist",
+      "expected": "Identical products, BoM, manufacturing, purchase, stock and POS data",
+      "actual": "All 19 sampled bakery tables unchanged; 1 MO / 1 PO / 3 transfers / 2 POS orders / 10 Done moves",
+      "result": "PASS"
+    },
+    {
+      "test": "Named volumes persist",
+      "expected": "Same names, creation times and mountpoints",
+      "actual": "Both named volumes retained unchanged",
+      "result": "PASS"
+    },
+    {
+      "test": "Odoo filestores persist",
+      "expected": "Identical files and contents",
+      "actual": "House 17 files; bakery 471 files; both full-tree SHA256 checksums unchanged",
+      "result": "PASS"
+    },
+    {
+      "test": "Mounts persist",
+      "expected": "Same mounted volumes and binds",
+      "actual": "Mount sets identical after sorting by destination",
+      "result": "PASS"
+    },
+    {
+      "test": "Unexpected startup/test log errors",
+      "expected": 0,
+      "actual": 0,
+      "result": "PASS"
+    },
+    {
+      "test": "Guest House end-to-end",
+      "expected": [
+        "draft/available",
+        "confirmed/reserved",
+        "checked_in/occupied",
+        "checked_out/available"
+      ],
+      "actual": [
+        "draft/available",
+        "confirmed/reserved",
+        "checked_in/occupied",
+        "checked_out/available"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Croissant manufacturing to POS",
+      "expected": "Consume only required ingredients, produce 10, sell 1, finish with 9",
+      "actual": "Done MO consumed Flour 1 / Sugar 0.20 / Yeast 0.05 kg; output 10; paid POS delivered 1; stock 9",
+      "result": "PASS"
+    },
+    {
+      "test": "Coca-Cola purchase to POS",
+      "expected": "Receive 24, sell 2, finish with 22",
+      "actual": "Confirmed P00001; WH/IN/00001 Done 24; paid POS delivered 2; stock 22",
+      "result": "PASS"
+    },
+    {
+      "test": "Local secret exclusion",
+      "expected": "Sensitive files ignored and untracked; no known secrets in source",
+      "actual": "Ignore checks passed; known credential scan and common token/private-key patterns clear",
+      "result": "PASS"
+    },
+    {
+      "test": "Repository contains reproducible source",
+      "expected": "Project source committed to Git",
+      "actual": "No commits, no tracked files; source exists only as untracked workspace files",
+      "result": "FAIL"
+    },
+    {
+      "test": "Clone and fresh-install reproduction",
+      "expected": "Published URL and verified clean clone setup",
+      "actual": "No remote configured; README contains explicit REPOSITORY_URL placeholder",
+      "result": "NOT VERIFIED"
+    },
+    {
+      "test": "Backup restoration",
+      "expected": "Actual restore exercise",
+      "actual": "Not performed during this final system pass",
+      "result": "NOT VERIFIED"
+    }
+  ],
+  "guesthouse_checks": [
+    {
+      "test": "Initial room types",
+      "expected": [
+        "Deluxe",
+        "Family",
+        "Standard"
+      ],
+      "actual": [
+        "Deluxe",
+        "Family",
+        "Standard"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Initial room count",
+      "expected": 5,
+      "actual": 5,
+      "result": "PASS"
+    },
+    {
+      "test": "At least three bookings",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Guest Contacts present",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Different booking statuses",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Different booking dates",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Demo currency",
+      "expected": [
+        "LSL"
+      ],
+      "actual": [
+        "LSL"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Demo calculations and relationships",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Demo overlapping active pairs",
+      "expected": 0,
+      "actual": 0,
+      "result": "PASS"
+    },
+    {
+      "test": "Demo XML upgrade preserves records",
+      "expected": {
+        "204": {
+          "id": 204,
+          "state": "confirmed",
+          "check_in": "2026-10-07",
+          "check_out": "2026-10-10",
+          "nightly_rate": 450
+        },
+        "205": {
+          "id": 205,
+          "state": "checked_in",
+          "check_in": "2026-10-04",
+          "check_out": "2026-10-07",
+          "nightly_rate": 650
+        },
+        "206": {
+          "id": 206,
+          "state": "checked_out",
+          "check_in": "2026-09-27",
+          "check_out": "2026-09-29",
+          "nightly_rate": 650
+        },
+        "207": {
+          "id": 207,
+          "state": "cancelled",
+          "check_in": "2026-10-11",
+          "check_out": "2026-10-13",
+          "nightly_rate": 900
+        }
+      },
+      "actual": {
+        "204": {
+          "id": 204,
+          "state": "confirmed",
+          "check_in": "2026-10-07",
+          "check_out": "2026-10-10",
+          "nightly_rate": 450
+        },
+        "205": {
+          "id": 205,
+          "state": "checked_in",
+          "check_in": "2026-10-04",
+          "check_out": "2026-10-07",
+          "nightly_rate": 650
+        },
+        "206": {
+          "id": 206,
+          "state": "checked_out",
+          "check_in": "2026-09-27",
+          "check_out": "2026-09-29",
+          "nightly_rate": 650
+        },
+        "207": {
+          "id": 207,
+          "state": "cancelled",
+          "check_in": "2026-10-11",
+          "check_out": "2026-10-13",
+          "nightly_rate": 900
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "test": "TEST 1: create draft",
+      "expected": [
+        "draft",
+        "available"
+      ],
+      "actual": [
+        "draft",
+        "available"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Nightly rate defaults",
+      "expected": 650,
+      "actual": 650,
+      "result": "PASS"
+    },
+    {
+      "test": "Number of nights",
+      "expected": 3,
+      "actual": 3,
+      "result": "PASS"
+    },
+    {
+      "test": "Total: 3 nights × LSL 650",
+      "expected": 1950,
+      "actual": 1950,
+      "result": "PASS"
+    },
+    {
+      "test": "Reference generated",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Check-in while draft",
+      "expected": "UserError",
+      "actual": "UserError",
+      "result": "PASS"
+    },
+    {
+      "test": "Check-out while draft",
+      "expected": "UserError",
+      "actual": "UserError",
+      "result": "PASS"
+    },
+    {
+      "test": "Equal check-out/check-in dates",
+      "expected": "ValidationError",
+      "actual": "ValidationError",
+      "result": "PASS"
+    },
+    {
+      "test": "Earlier check-out date",
+      "expected": "ValidationError",
+      "actual": "ValidationError",
+      "result": "PASS"
+    },
+    {
+      "test": "Negative nightly rate",
+      "expected": "ValidationError",
+      "actual": "ValidationError",
+      "result": "PASS"
+    },
+    {
+      "test": "TEST 2: confirm",
+      "expected": [
+        "confirmed",
+        "reserved"
+      ],
+      "actual": [
+        "confirmed",
+        "reserved"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Check-out before check-in",
+      "expected": "UserError",
+      "actual": "UserError",
+      "result": "PASS"
+    },
+    {
+      "test": "Repeat confirm",
+      "expected": "UserError",
+      "actual": "UserError",
+      "result": "PASS"
+    },
+    {
+      "test": "Overlapping active reservation",
+      "expected": "ValidationError",
+      "actual": "ValidationError",
+      "result": "PASS"
+    },
+    {
+      "test": "Rejected overlap remains draft",
+      "expected": "draft",
+      "actual": "draft",
+      "result": "PASS"
+    },
+    {
+      "test": "TEST 3: check in",
+      "expected": [
+        "checked_in",
+        "occupied"
+      ],
+      "actual": [
+        "checked_in",
+        "occupied"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Reserve overlapping stay in occupied room",
+      "expected": "ValidationError",
+      "actual": "ValidationError",
+      "result": "PASS"
+    },
+    {
+      "test": "Cancel checked-in booking",
+      "expected": "UserError",
+      "actual": "UserError",
+      "result": "PASS"
+    },
+    {
+      "test": "Rejected cancellation keeps occupancy",
+      "expected": [
+        "checked_in",
+        "occupied"
+      ],
+      "actual": [
+        "checked_in",
+        "occupied"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "TEST 4: check out",
+      "expected": [
+        "checked_out",
+        "available"
+      ],
+      "actual": [
+        "checked_out",
+        "available"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Reopen checked-out booking",
+      "expected": "UserError",
+      "actual": "UserError",
+      "result": "PASS"
+    },
+    {
+      "test": "Cancel confirmed booking",
+      "expected": [
+        "cancelled",
+        "available"
+      ],
+      "actual": [
+        "cancelled",
+        "available"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Cancelled stay does not block same dates",
+      "expected": [
+        "confirmed",
+        "reserved"
+      ],
+      "actual": [
+        "confirmed",
+        "reserved"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Adjacent stays allowed",
+      "expected": "confirmed",
+      "actual": "confirmed",
+      "result": "PASS"
+    },
+    {
+      "test": "Cancel preserves another reservation",
+      "expected": [
+        "cancelled",
+        "reserved"
+      ],
+      "actual": [
+        "cancelled",
+        "reserved"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Cancel last reservation releases room",
+      "expected": "available",
+      "actual": "available",
+      "result": "PASS"
+    },
+    {
+      "test": "Future non-overlapping reservation while occupied",
+      "expected": [
+        "confirmed",
+        "occupied"
+      ],
+      "actual": [
+        "confirmed",
+        "occupied"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Second physical check-in",
+      "expected": "ValidationError",
+      "actual": "ValidationError",
+      "result": "PASS"
+    },
+    {
+      "test": "Checkout preserves future reservation",
+      "expected": [
+        "checked_out",
+        "reserved"
+      ],
+      "actual": [
+        "checked_out",
+        "reserved"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Next guest can check in after departure",
+      "expected": [
+        "checked_in",
+        "occupied"
+      ],
+      "actual": [
+        "checked_in",
+        "occupied"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Critical fields frozen: confirmed",
+      "expected": 6,
+      "actual": 6,
+      "result": "PASS"
+    },
+    {
+      "test": "Critical fields frozen: checked_in",
+      "expected": 6,
+      "actual": 6,
+      "result": "PASS"
+    },
+    {
+      "test": "Critical fields frozen: checked_out",
+      "expected": 6,
+      "actual": 6,
+      "result": "PASS"
+    },
+    {
+      "test": "Critical fields frozen: cancelled",
+      "expected": 6,
+      "actual": 6,
+      "result": "PASS"
+    },
+    {
+      "test": "Maintenance room confirmation",
+      "expected": "ValidationError",
+      "actual": "ValidationError",
+      "result": "PASS"
+    },
+    {
+      "test": "Receptionist booking lifecycle",
+      "expected": [
+        "checked_out",
+        "available"
+      ],
+      "actual": [
+        "checked_out",
+        "available"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Receptionist creates standard guest Contact",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Receptionist cannot modify rooms",
+      "expected": "AccessError",
+      "actual": "AccessError",
+      "result": "PASS"
+    },
+    {
+      "test": "Receptionist cannot create room types",
+      "expected": "AccessError",
+      "actual": "AccessError",
+      "result": "PASS"
+    },
+    {
+      "test": "Receptionist cannot delete booking history",
+      "expected": "AccessError",
+      "actual": "AccessError",
+      "result": "PASS"
+    },
+    {
+      "test": "Public cannot read bookings",
+      "expected": "AccessError",
+      "actual": "AccessError",
+      "result": "PASS"
+    },
+    {
+      "test": "Unassigned internal user cannot read bookings",
+      "expected": "AccessError",
+      "actual": "AccessError",
+      "result": "PASS"
+    },
+    {
+      "test": "Portal cannot read bookings",
+      "expected": "AccessError",
+      "actual": "AccessError",
+      "result": "PASS"
+    },
+    {
+      "test": "Receptionist operational menus",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Configuration restricted to managers",
+      "expected": false,
+      "actual": false,
+      "result": "PASS"
+    },
+    {
+      "test": "Manager can configure rooms",
+      "expected": "maintenance",
+      "actual": "maintenance",
+      "result": "PASS"
+    },
+    {
+      "test": "Manager sees Room Types menu",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Final room count after rollback",
+      "expected": 5,
+      "actual": 5,
+      "result": "PASS"
+    },
+    {
+      "test": "Final booking count after rollback",
+      "expected": 4,
+      "actual": 4,
+      "result": "PASS"
+    },
+    {
+      "test": "Final guest count after rollback",
+      "expected": 4,
+      "actual": 4,
+      "result": "PASS"
+    }
+  ],
+  "bakery_audit": {
+    "database": "vishanti_bakery",
+    "tests": [
+      {
+        "test": "Four required applications installed",
+        "expected": [
+          "installed",
+          "installed",
+          "installed",
+          "installed"
+        ],
+        "actual": [
+          "installed",
+          "installed",
+          "installed",
+          "installed"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Required modules use Community licences",
+        "expected": [
+          "LGPL-3",
+          "LGPL-3",
+          "LGPL-3",
+          "LGPL-3"
+        ],
+        "actual": [
+          "LGPL-3",
+          "LGPL-3",
+          "LGPL-3",
+          "LGPL-3"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "No Enterprise modules installed",
+        "expected": 0,
+        "actual": 0,
+        "result": "PASS"
+      },
+      {
+        "test": "Guest House module not installed in bakery",
+        "expected": "uninstalled",
+        "actual": "uninstalled",
+        "result": "PASS"
+      },
+      {
+        "test": "Currency is LSL",
+        "expected": "LSL",
+        "actual": "LSL",
+        "result": "PASS"
+      },
+      {
+        "test": "Flour exists",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Flour tracks quantities",
+        "expected": [
+          "consu",
+          true,
+          "none"
+        ],
+        "actual": [
+          "consu",
+          true,
+          "none"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Sugar exists",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Sugar tracks quantities",
+        "expected": [
+          "consu",
+          true,
+          "none"
+        ],
+        "actual": [
+          "consu",
+          true,
+          "none"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Yeast exists",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Yeast tracks quantities",
+        "expected": [
+          "consu",
+          true,
+          "none"
+        ],
+        "actual": [
+          "consu",
+          true,
+          "none"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant exists",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant tracks quantities",
+        "expected": [
+          "consu",
+          true,
+          "none"
+        ],
+        "actual": [
+          "consu",
+          true,
+          "none"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola 1L exists",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola 1L tracks quantities",
+        "expected": [
+          "consu",
+          true,
+          "none"
+        ],
+        "actual": [
+          "consu",
+          true,
+          "none"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Exactly five active business products",
+        "expected": 5,
+        "actual": 5,
+        "result": "PASS"
+      },
+      {
+        "test": "Ingredient units",
+        "expected": [
+          "kg",
+          "kg",
+          "kg"
+        ],
+        "actual": [
+          "kg",
+          "kg",
+          "kg"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Finished product units",
+        "expected": [
+          "Units",
+          "Units"
+        ],
+        "actual": [
+          "Units",
+          "Units"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "POS availability",
+        "expected": [
+          "Coca-Cola 1L",
+          "Croissant"
+        ],
+        "actual": [
+          "Coca-Cola 1L",
+          "Croissant"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Ingredient purchasing/selling settings",
+        "expected": [
+          [
+            true,
+            false
+          ],
+          [
+            true,
+            false
+          ],
+          [
+            true,
+            false
+          ]
+        ],
+        "actual": [
+          [
+            true,
+            false
+          ],
+          [
+            true,
+            false
+          ],
+          [
+            true,
+            false
+          ]
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant manufactured and sellable",
+        "expected": [
+          false,
+          true
+        ],
+        "actual": [
+          false,
+          true
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola purchasable and sellable",
+        "expected": [
+          true,
+          true
+        ],
+        "actual": [
+          true,
+          true
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Exactly one Croissant BoM",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "BoM contains ONLY Flour, Sugar and Yeast",
+        "expected": [
+          "Flour",
+          "Sugar",
+          "Yeast"
+        ],
+        "actual": [
+          "Flour",
+          "Sugar",
+          "Yeast"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "BoM quantities per 10 croissants",
+        "expected": {
+          "Flour": 1,
+          "Sugar": 0.2,
+          "Yeast": 0.05
+        },
+        "actual": {
+          "Flour": 1,
+          "Sugar": 0.2,
+          "Yeast": 0.05
+        },
+        "result": "PASS"
+      },
+      {
+        "test": "BoM output and consumption policy",
+        "expected": [
+          10,
+          "normal",
+          "strict"
+        ],
+        "actual": [
+          10,
+          "normal",
+          "strict"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Manufacturing Order complete",
+        "expected": [
+          1,
+          "done",
+          10
+        ],
+        "actual": [
+          1,
+          "done",
+          10
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "MRP consumed only required ingredients",
+        "expected": [
+          "Flour",
+          "Sugar",
+          "Yeast"
+        ],
+        "actual": [
+          "Flour",
+          "Sugar",
+          "Yeast"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Actual MRP consumption",
+        "expected": {
+          "Flour": 1,
+          "Sugar": 0.2,
+          "Yeast": 0.05
+        },
+        "actual": {
+          "Flour": 1,
+          "Sugar": 0.2,
+          "Yeast": 0.05
+        },
+        "result": "PASS"
+      },
+      {
+        "test": "Ingredient stock moves Done",
+        "expected": [
+          "done",
+          "done",
+          "done"
+        ],
+        "actual": [
+          "done",
+          "done",
+          "done"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Finished Croissant stock move",
+        "expected": [
+          1,
+          "done",
+          10
+        ],
+        "actual": [
+          1,
+          "done",
+          10
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Fictional vendor exists",
+        "expected": [
+          1,
+          "Demo Mountain Beverages",
+          true
+        ],
+        "actual": [
+          1,
+          "Demo Mountain Beverages",
+          true
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Purchase Order confirmed",
+        "expected": [
+          1,
+          "purchase"
+        ],
+        "actual": [
+          1,
+          "purchase"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "PO ordered and received quantities",
+        "expected": [
+          24,
+          24
+        ],
+        "actual": [
+          24,
+          24
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola purchasing price and total",
+        "expected": [
+          12,
+          288
+        ],
+        "actual": [
+          12,
+          288
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Purchase receipt exists and Done",
+        "expected": [
+          1,
+          "done"
+        ],
+        "actual": [
+          1,
+          "done"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Receipt stock movement",
+        "expected": [
+          24,
+          "supplier",
+          "internal"
+        ],
+        "actual": [
+          24,
+          "supplier",
+          "internal"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Receipt linked to Purchase Order",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Two completed POS orders",
+        "expected": [
+          "done",
+          "done"
+        ],
+        "actual": [
+          "done",
+          "done"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant POS sale succeeds",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant POS quantity sold",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant POS payment completed",
+        "expected": [
+          15,
+          15,
+          "Cash"
+        ],
+        "actual": [
+          15,
+          15,
+          "Cash"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant POS owns a Done delivery",
+        "expected": [
+          1,
+          "done"
+        ],
+        "actual": [
+          1,
+          "done"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant POS stock movement",
+        "expected": [
+          1,
+          "internal",
+          "customer"
+        ],
+        "actual": [
+          1,
+          "internal",
+          "customer"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola 1L POS sale succeeds",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola 1L POS quantity sold",
+        "expected": 2,
+        "actual": 2,
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola 1L POS payment completed",
+        "expected": [
+          36,
+          36,
+          "Cash"
+        ],
+        "actual": [
+          36,
+          36,
+          "Cash"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola 1L POS owns a Done delivery",
+        "expected": [
+          1,
+          "done"
+        ],
+        "actual": [
+          1,
+          "done"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola 1L POS stock movement",
+        "expected": [
+          2,
+          "internal",
+          "customer"
+        ],
+        "actual": [
+          2,
+          "internal",
+          "customer"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "Demo POS session Closed and Posted",
+        "expected": [
+          1,
+          "closed",
+          "posted"
+        ],
+        "actual": [
+          1,
+          "closed",
+          "posted"
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "POS opening/closing cash and difference",
+        "expected": [
+          0,
+          51,
+          0
+        ],
+        "actual": [
+          0,
+          51,
+          0
+        ],
+        "result": "PASS"
+      },
+      {
+        "test": "POS paid cash total",
+        "expected": 51,
+        "actual": 51,
+        "result": "PASS"
+      },
+      {
+        "test": "POS accounting entry balances",
+        "expected": 0,
+        "actual": 0,
+        "result": "PASS"
+      },
+      {
+        "test": "Final stock: Flour",
+        "expected": 9,
+        "actual": 9,
+        "result": "PASS"
+      },
+      {
+        "test": "Flour stock agrees with posted movement ledger",
+        "expected": 9,
+        "actual": 9,
+        "result": "PASS"
+      },
+      {
+        "test": "Flour has only initial stock adjustment",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Final stock: Sugar",
+        "expected": 1.8,
+        "actual": 1.8,
+        "result": "PASS"
+      },
+      {
+        "test": "Sugar stock agrees with posted movement ledger",
+        "expected": 1.8,
+        "actual": 1.8,
+        "result": "PASS"
+      },
+      {
+        "test": "Sugar has only initial stock adjustment",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Final stock: Yeast",
+        "expected": 0.45,
+        "actual": 0.45,
+        "result": "PASS"
+      },
+      {
+        "test": "Yeast stock agrees with posted movement ledger",
+        "expected": 0.45,
+        "actual": 0.45,
+        "result": "PASS"
+      },
+      {
+        "test": "Yeast has only initial stock adjustment",
+        "expected": 1,
+        "actual": 1,
+        "result": "PASS"
+      },
+      {
+        "test": "Final stock: Croissant",
+        "expected": 9,
+        "actual": 9,
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant stock agrees with posted movement ledger",
+        "expected": 9,
+        "actual": 9,
+        "result": "PASS"
+      },
+      {
+        "test": "Croissant has no inventory adjustments",
+        "expected": 0,
+        "actual": 0,
+        "result": "PASS"
+      },
+      {
+        "test": "Final stock: Coca-Cola 1L",
+        "expected": 22,
+        "actual": 22,
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola 1L stock agrees with posted movement ledger",
+        "expected": 22,
+        "actual": 22,
+        "result": "PASS"
+      },
+      {
+        "test": "Coca-Cola 1L has no inventory adjustments",
+        "expected": 0,
+        "actual": 0,
+        "result": "PASS"
+      }
+    ],
+    "stock": {
+      "Flour": 9,
+      "Sugar": 1.8,
+      "Yeast": 0.45,
+      "Croissant": 9,
+      "Coca-Cola 1L": 22
+    },
+    "ledger": [
+      {
+        "product": "Flour",
+        "move_id": 18,
+        "reference": "WH/MO/00003",
+        "quantity": 1,
+        "difference": -1,
+        "from": "WH/Stock",
+        "to": "Production",
+        "state": "done"
+      },
+      {
+        "product": "Flour",
+        "move_id": 15,
+        "reference": "Vishanti demo opening stock",
+        "quantity": 10,
+        "difference": 10,
+        "from": "Inventory adjustment",
+        "to": "WH/Stock",
+        "state": "done"
+      },
+      {
+        "product": "Sugar",
+        "move_id": 19,
+        "reference": "WH/MO/00003",
+        "quantity": 0.2,
+        "difference": -0.2,
+        "from": "WH/Stock",
+        "to": "Production",
+        "state": "done"
+      },
+      {
+        "product": "Sugar",
+        "move_id": 16,
+        "reference": "Vishanti demo opening stock",
+        "quantity": 2,
+        "difference": 2,
+        "from": "Inventory adjustment",
+        "to": "WH/Stock",
+        "state": "done"
+      },
+      {
+        "product": "Yeast",
+        "move_id": 20,
+        "reference": "WH/MO/00003",
+        "quantity": 0.05,
+        "difference": -0.05,
+        "from": "WH/Stock",
+        "to": "Production",
+        "state": "done"
+      },
+      {
+        "product": "Yeast",
+        "move_id": 17,
+        "reference": "Vishanti demo opening stock",
+        "quantity": 0.5,
+        "difference": 0.5,
+        "from": "Inventory adjustment",
+        "to": "WH/Stock",
+        "state": "done"
+      },
+      {
+        "product": "Croissant",
+        "move_id": 21,
+        "reference": "WH/MO/00003",
+        "quantity": 10,
+        "difference": 10,
+        "from": "Production",
+        "to": "WH/Stock",
+        "state": "done"
+      },
+      {
+        "product": "Croissant",
+        "move_id": 23,
+        "reference": "WH/POS/00001",
+        "quantity": 1,
+        "difference": -1,
+        "from": "WH/Stock",
+        "to": "Customers",
+        "state": "done"
+      },
+      {
+        "product": "Coca-Cola 1L",
+        "move_id": 22,
+        "reference": "WH/IN/00001",
+        "quantity": 24,
+        "difference": 24,
+        "from": "Vendors",
+        "to": "WH/Stock",
+        "state": "done"
+      },
+      {
+        "product": "Coca-Cola 1L",
+        "move_id": 24,
+        "reference": "WH/POS/00002",
+        "quantity": 2,
+        "difference": -2,
+        "from": "WH/Stock",
+        "to": "Customers",
+        "state": "done"
+      }
+    ],
+    "pos_orders": [
+      {
+        "product": "Croissant",
+        "order_id": 1,
+        "order": "Vishanti Bakery - 000001",
+        "ticket": "261-1-000001",
+        "sold": 1,
+        "paid_lsl": 15,
+        "delivery_id": 2,
+        "delivery": "WH/POS/00001"
+      },
+      {
+        "product": "Coca-Cola 1L",
+        "order_id": 2,
+        "order": "Vishanti Bakery - 000002",
+        "ticket": "261-1-000002",
+        "sold": 2,
+        "paid_lsl": 36,
+        "delivery_id": 3,
+        "delivery": "WH/POS/00002"
+      }
+    ],
+    "session": {
+      "id": 1,
+      "name": "Vishanti Bakery/00001",
+      "state": "closed",
+      "account_move_id": 1,
+      "account_move": "POSS/2026/10/0001",
+      "cash_lsl": 51
+    }
+  },
+  "guesthouse_browser_checks": [
+    {
+      "test": "Guest House database reopened in browser",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Developer Mode enabled",
+      "expected": "1",
+      "actual": "1",
+      "result": "PASS"
+    },
+    {
+      "test": "Developer Mode menu rendered",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Bookings list retains four records",
+      "expected": 4,
+      "actual": 4,
+      "result": "PASS"
+    },
+    {
+      "test": "Operational navigation",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Configuration contains Room Types",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "guesthouse-rooms list loads",
+      "expected": 5,
+      "actual": 5,
+      "result": "PASS"
+    },
+    {
+      "test": "guesthouse-guests list loads",
+      "expected": 4,
+      "actual": 4,
+      "result": "PASS"
+    },
+    {
+      "test": "guesthouse-room-types list loads",
+      "expected": 3,
+      "actual": 3,
+      "result": "PASS"
+    },
+    {
+      "test": "Confirmed visible workflow buttons",
+      "expected": [
+        "action_cancel",
+        "action_check_in"
+      ],
+      "actual": [
+        "action_cancel",
+        "action_check_in"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Confirmed critical fields readonly",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Checked In visible workflow buttons",
+      "expected": [
+        "action_check_out"
+      ],
+      "actual": [
+        "action_check_out"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Checked In critical fields readonly",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Checked Out visible workflow buttons",
+      "expected": [],
+      "actual": [],
+      "result": "PASS"
+    },
+    {
+      "test": "Checked Out critical fields readonly",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Cancelled visible workflow buttons",
+      "expected": [],
+      "actual": [],
+      "result": "PASS"
+    },
+    {
+      "test": "Cancelled critical fields readonly",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "New draft displays only Confirm",
+      "expected": [
+        "action_confirm"
+      ],
+      "actual": [
+        "action_confirm"
+      ],
+      "result": "PASS"
+    },
+    {
+      "test": "Unsaved form did not create a booking",
+      "expected": 4,
+      "actual": 4,
+      "result": "PASS"
+    },
+    {
+      "test": "Browser uncaught JavaScript exceptions",
+      "expected": 0,
+      "actual": 0,
+      "result": "PASS"
+    }
+  ],
+  "bakery_browser_checks": [
+    {
+      "test": "Inventory product screen",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Inventory Stock screen",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "BoM browser ingredient rows",
+      "expected": 3,
+      "actual": 3,
+      "result": "PASS"
+    },
+    {
+      "test": "BoM browser only required ingredients",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Manufacturing browser Done state",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Purchase browser vendor and product",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Inventory browser validated receipt",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Inventory movement history",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "POS dashboard loads configuration",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "POS orders screen",
+      "expected": 2,
+      "actual": 2,
+      "result": "PASS"
+    },
+    {
+      "test": "POS closed session screen",
+      "expected": true,
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "test": "Backend uncaught JavaScript exceptions",
+      "expected": 0,
+      "actual": 0,
+      "result": "PASS"
+    }
+  ],
+  "security": {
+    "git_commits": 0,
+    "tracked_files": 0,
+    "remote_configured": false,
+    "local_credentials_distinct": true,
+    "sensitive_files_ignored": true,
+    "known_credentials_found_in_git_visible_files": 0,
+    "common_secret_pattern_findings": 0,
+    "local_file_modes": {
+      ".env": "600",
+      "config/database-admins.json": "600",
+      "config/odoo.conf": "644"
+    },
+    "postgres_superuser_odoo": false,
+    "postgres_host_port_published": false,
+    "odoo_host_binding": "127.0.0.1",
+    "source_python_files_parsed": 15,
+    "source_xml_files_parsed": 8
+  },
+  "readme_checks": {
+    "required_headings": 14,
+    "bash_blocks_syntax_checked": 12,
+    "template_copy_and_permissions_exercised": true,
+    "clone_not_verified": true
+  }
+}

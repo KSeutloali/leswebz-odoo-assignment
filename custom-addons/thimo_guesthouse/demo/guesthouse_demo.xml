@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Keep demonstration records unchanged on module upgrades. Dates are
+         relative to the first load, not recalculated on subsequent upgrades. -->
+    <data noupdate="1">
+        <record id="demo_room_type_standard" model="thimo.guesthouse.room.type">
+            <field name="name">Standard</field>
+            <field name="default_rate">450</field>
+            <field name="currency_id" ref="base.LSL"/>
+            <field name="capacity">2</field>
+            <field name="description">Simple double room; fictional demonstration rate.</field>
+        </record>
+        <record id="demo_room_type_deluxe" model="thimo.guesthouse.room.type">
+            <field name="name">Deluxe</field>
+            <field name="default_rate">650</field>
+            <field name="currency_id" ref="base.LSL"/>
+            <field name="capacity">2</field>
+            <field name="description">Spacious double room; fictional demonstration rate.</field>
+        </record>
+        <record id="demo_room_type_family" model="thimo.guesthouse.room.type">
+            <field name="name">Family</field>
+            <field name="default_rate">900</field>
+            <field name="currency_id" ref="base.LSL"/>
+            <field name="capacity">4</field>
+            <field name="description">Room for four; fictional demonstration rate.</field>
+        </record>
+
+        <record id="demo_room_101" model="thimo.guesthouse.room">
+            <field name="name">101</field>
+            <field name="room_type_id" ref="demo_room_type_standard"/>
+        </record>
+        <record id="demo_room_102" model="thimo.guesthouse.room">
+            <field name="name">102</field>
+            <field name="room_type_id" ref="demo_room_type_standard"/>
+        </record>
+        <record id="demo_room_201" model="thimo.guesthouse.room">
+            <field name="name">201</field>
+            <field name="room_type_id" ref="demo_room_type_deluxe"/>
+        </record>
+        <record id="demo_room_202" model="thimo.guesthouse.room">
+            <field name="name">202</field>
+            <field name="room_type_id" ref="demo_room_type_deluxe"/>
+        </record>
+        <record id="demo_room_301" model="thimo.guesthouse.room">
+            <field name="name">301</field>
+            <field name="room_type_id" ref="demo_room_type_family"/>
+        </record>
+
+        <!-- These are fictional labels, with no personal contact information. -->
+        <record id="demo_guest_alpha" model="res.partner">
+            <field name="name">Demo Guest Alpha</field>
+            <field name="is_guest" eval="True"/>
+        </record>
+        <record id="demo_guest_bravo" model="res.partner">
+            <field name="name">Demo Guest Bravo</field>
+            <field name="is_guest" eval="True"/>
+        </record>
+        <record id="demo_guest_charlie" model="res.partner">
+            <field name="name">Demo Guest Charlie</field>
+            <field name="is_guest" eval="True"/>
+        </record>
+        <record id="demo_guest_delta" model="res.partner">
+            <field name="name">Demo Guest Delta</field>
+            <field name="is_guest" eval="True"/>
+        </record>
+        <record id="demo_guest_echo" model="res.partner">
+            <field name="name">Demo Guest Echo</field>
+            <field name="is_guest" eval="True"/>
+        </record>
+
+        <!-- All bookings start in Draft and use the real workflow methods. -->
+        <record id="demo_booking_draft" model="thimo.guesthouse.booking">
+            <field name="guest_id" ref="demo_guest_alpha"/>
+            <field name="room_id" ref="demo_room_101"/>
+            <field name="check_in" eval="(DateTime.today() + timedelta(days=9)).date()"/>
+            <field name="check_out" eval="(DateTime.today() + timedelta(days=11)).date()"/>
+        </record>
+        <record id="demo_booking_confirmed" model="thimo.guesthouse.booking">
+            <field name="guest_id" ref="demo_guest_bravo"/>
+            <field name="room_id" ref="demo_room_102"/>
+            <field name="check_in" eval="(DateTime.today() + timedelta(days=2)).date()"/>
+            <field name="check_out" eval="(DateTime.today() + timedelta(days=5)).date()"/>
+        </record>
+        <record id="demo_booking_checked_in" model="thimo.guesthouse.booking">
+            <field name="guest_id" ref="demo_guest_charlie"/>
+            <field name="room_id" ref="demo_room_201"/>
+            <field name="check_in" eval="(DateTime.today() - timedelta(days=1)).date()"/>
+            <field name="check_out" eval="(DateTime.today() + timedelta(days=2)).date()"/>
+        </record>
+        <record id="demo_booking_checked_out" model="thimo.guesthouse.booking">
+            <field name="guest_id" ref="demo_guest_delta"/>
+            <field name="room_id" ref="demo_room_202"/>
+            <field name="check_in" eval="(DateTime.today() - timedelta(days=8)).date()"/>
+            <field name="check_out" eval="(DateTime.today() - timedelta(days=6)).date()"/>
+        </record>
+        <record id="demo_booking_cancelled" model="thimo.guesthouse.booking">
+            <field name="guest_id" ref="demo_guest_echo"/>
+            <field name="room_id" ref="demo_room_301"/>
+            <field name="check_in" eval="(DateTime.today() + timedelta(days=6)).date()"/>
+            <field name="check_out" eval="(DateTime.today() + timedelta(days=8)).date()"/>
+        </record>
+        <function model="thimo.guesthouse.booking" name="action_confirm"
+                  eval="[[ref('demo_booking_confirmed'), ref('demo_booking_checked_in'), ref('demo_booking_checked_out'), ref('demo_booking_cancelled')]]"/>
+        <function model="thimo.guesthouse.booking" name="action_check_in"
+                  eval="[[ref('demo_booking_checked_in'), ref('demo_booking_checked_out')]]"/>
+        <function model="thimo.guesthouse.booking" name="action_check_out"
+                  eval="[[ref('demo_booking_checked_out')]]"/>
+        <function model="thimo.guesthouse.booking" name="action_cancel"
+                  eval="[[ref('demo_booking_cancelled')]]"/>
+    </data>
+</odoo>

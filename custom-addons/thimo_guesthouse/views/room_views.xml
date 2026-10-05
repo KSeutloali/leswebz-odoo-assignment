@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_room_list" model="ir.ui.view">
+        <field name="name">thimo.guesthouse.room.list</field>
+        <field name="model">thimo.guesthouse.room</field>
+        <field name="arch" type="xml">
+            <list string="Rooms" decoration-muted="not active">
+                <field name="name"/>
+                <field name="room_type_id"/>
+                <field name="state" widget="badge" decoration-success="state == 'available'" decoration-info="state == 'reserved'" decoration-warning="state == 'occupied'" decoration-danger="state == 'maintenance'"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_room_form" model="ir.ui.view">
+        <field name="name">thimo.guesthouse.room.form</field>
+        <field name="model">thimo.guesthouse.room</field>
+        <field name="arch" type="xml">
+            <form string="Room">
+                <header>
+                    <button name="action_set_maintenance" type="object" string="Set Maintenance" groups="thimo_guesthouse.group_guesthouse_manager" invisible="state != 'available' or not active"/>
+                    <button name="action_end_maintenance" type="object" string="End Maintenance" groups="thimo_guesthouse.group_guesthouse_manager" invisible="state != 'maintenance'"/>
+                    <field name="state" widget="statusbar" readonly="True"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <field name="active" invisible="True"/>
+                    <group>
+                        <field name="name"/>
+                        <field name="room_type_id" options="{'no_create': True}"/>
+                    </group>
+                    <notebook>
+                        <page string="Bookings" name="bookings">
+                            <field name="booking_ids" readonly="True">
+                                <list create="False" edit="False" delete="False">
+                                    <field name="name"/>
+                                    <field name="guest_id"/>
+                                    <field name="check_in"/>
+                                    <field name="check_out"/>
+                                    <field name="state" widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_room_search" model="ir.ui.view">
+        <field name="name">thimo.guesthouse.room.search</field>
+        <field name="model">thimo.guesthouse.room</field>
+        <field name="arch" type="xml">
+            <search string="Rooms">
+                <field name="name"/>
+                <field name="room_type_id"/>
+                <filter name="available" string="Available" domain="[('state', '=', 'available')]"/>
+                <filter name="reserved" string="Reserved" domain="[('state', '=', 'reserved')]"/>
+                <filter name="occupied" string="Occupied" domain="[('state', '=', 'occupied')]"/>
+                <filter name="maintenance" string="Maintenance" domain="[('state', '=', 'maintenance')]"/>
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="group_type" string="Room Type" context="{'group_by': 'room_type_id'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_rooms" model="ir.actions.act_window">
+        <field name="name">Rooms</field>
+        <field name="res_model">thimo.guesthouse.room</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_room_search"/>
+        <field name="path">guesthouse-rooms</field>
+        <field name="help" type="html"><p class="o_view_nocontent_smiling_face">Create rooms and assign their room types.</p></field>
+    </record>
+</odoo>

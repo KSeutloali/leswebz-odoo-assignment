@@ -1,0 +1,13 @@
+[options]
+# Odoo 19 validates that an addon directory contains a module. The glob allows
+# this mount to start empty and includes it after the first addon is added.
+addons_path = /mnt/extra-addons*
+data_dir = /var/lib/odoo
+admin_passwd = REPLACE_WITH_LOCAL_MASTER_PASSWORD
+dbfilter = ^(thimo_guesthouse|vishanti_bakery)$
+list_db = True
+http_interface = 0.0.0.0
+http_port = 8069
+workers = 0
+proxy_mode = False
+log_level = info

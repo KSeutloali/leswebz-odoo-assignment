@@ -1,0 +1,257 @@
+{
+  "database": "vishanti_bakery",
+  "company": "Vishanti Bakery",
+  "currency": "LSL",
+  "recorded_at_utc": "2026-10-05T11:49:36",
+  "products": {
+    "Flour": {
+      "id": 13,
+      "template_id": 13,
+      "uom": "kg",
+      "cost": 20,
+      "sale_price": 0
+    },
+    "Sugar": {
+      "id": 14,
+      "template_id": 14,
+      "uom": "kg",
+      "cost": 30,
+      "sale_price": 0
+    },
+    "Yeast": {
+      "id": 15,
+      "template_id": 15,
+      "uom": "kg",
+      "cost": 100,
+      "sale_price": 0
+    },
+    "Croissant": {
+      "id": 16,
+      "template_id": 16,
+      "uom": "Units",
+      "cost": 3.1,
+      "sale_price": 15
+    },
+    "Coca-Cola 1L": {
+      "id": 17,
+      "template_id": 17,
+      "uom": "Units",
+      "cost": 12,
+      "sale_price": 18
+    }
+  },
+  "vendor": {
+    "id": 8,
+    "name": "Demo Mountain Beverages"
+  },
+  "bom": {
+    "id": 3,
+    "reference": "VBAK-CROISSANT-10",
+    "output": 10,
+    "ingredients_kg": {
+      "Flour": 1,
+      "Sugar": 0.2,
+      "Yeast": 0.05
+    }
+  },
+  "manufacturing": {
+    "id": 3,
+    "reference": "WH/MO/00003",
+    "before": {
+      "Flour": 10,
+      "Sugar": 2,
+      "Yeast": 0.5,
+      "Croissant": 0,
+      "Coca-Cola 1L": 0
+    },
+    "after": {
+      "Flour": 9,
+      "Sugar": 1.8,
+      "Yeast": 0.45,
+      "Croissant": 10,
+      "Coca-Cola 1L": 0
+    },
+    "difference": {
+      "Flour": -1,
+      "Sugar": -0.2,
+      "Yeast": -0.05,
+      "Croissant": 10,
+      "Coca-Cola 1L": 0
+    }
+  },
+  "purchase": {
+    "id": 1,
+    "reference": "P00001",
+    "before_confirmation": 0,
+    "after_confirmation": 0,
+    "total_lsl": 288
+  },
+  "receipt": {
+    "id": 1,
+    "reference": "WH/IN/00001",
+    "before": 0,
+    "after": 24,
+    "quantity": 24
+  },
+  "pos": {
+    "config_id": 1,
+    "session_id": 1,
+    "cash_method_id": 4,
+    "sales": [
+      {
+        "product": "Croissant",
+        "order_id": 1,
+        "order": "Vishanti Bakery - 000001",
+        "ticket": "261-1-000001",
+        "sold": 1,
+        "paid_lsl": 15,
+        "delivery_id": 2,
+        "delivery": "WH/POS/00001",
+        "before": 10,
+        "after": 9,
+        "difference": -1
+      },
+      {
+        "product": "Coca-Cola 1L",
+        "order_id": 2,
+        "order": "Vishanti Bakery - 000002",
+        "ticket": "261-1-000002",
+        "sold": 2,
+        "paid_lsl": 36,
+        "delivery_id": 3,
+        "delivery": "WH/POS/00002",
+        "before": 24,
+        "after": 22,
+        "difference": -2
+      }
+    ],
+    "session": {
+      "id": 1,
+      "name": "Vishanti Bakery/00001",
+      "state": "closed",
+      "account_move_id": 1,
+      "account_move": "POSS/2026/10/0001",
+      "cash_lsl": 51
+    }
+  },
+  "location": {
+    "id": 5,
+    "name": "WH/Stock"
+  },
+  "final_stock": {
+    "Flour": 9,
+    "Sugar": 1.8,
+    "Yeast": 0.45,
+    "Croissant": 9,
+    "Coca-Cola 1L": 22
+  },
+  "posted_movement_ledger": [
+    {
+      "product": "Flour",
+      "move_id": 18,
+      "reference": "WH/MO/00003",
+      "quantity": 1,
+      "difference": -1,
+      "from": "WH/Stock",
+      "to": "Production",
+      "state": "done"
+    },
+    {
+      "product": "Flour",
+      "move_id": 15,
+      "reference": "Vishanti demo opening stock",
+      "quantity": 10,
+      "difference": 10,
+      "from": "Inventory adjustment",
+      "to": "WH/Stock",
+      "state": "done"
+    },
+    {
+      "product": "Sugar",
+      "move_id": 19,
+      "reference": "WH/MO/00003",
+      "quantity": 0.2,
+      "difference": -0.2,
+      "from": "WH/Stock",
+      "to": "Production",
+      "state": "done"
+    },
+    {
+      "product": "Sugar",
+      "move_id": 16,
+      "reference": "Vishanti demo opening stock",
+      "quantity": 2,
+      "difference": 2,
+      "from": "Inventory adjustment",
+      "to": "WH/Stock",
+      "state": "done"
+    },
+    {
+      "product": "Yeast",
+      "move_id": 20,
+      "reference": "WH/MO/00003",
+      "quantity": 0.05,
+      "difference": -0.05,
+      "from": "WH/Stock",
+      "to": "Production",
+      "state": "done"
+    },
+    {
+      "product": "Yeast",
+      "move_id": 17,
+      "reference": "Vishanti demo opening stock",
+      "quantity": 0.5,
+      "difference": 0.5,
+      "from": "Inventory adjustment",
+      "to": "WH/Stock",
+      "state": "done"
+    },
+    {
+      "product": "Croissant",
+      "move_id": 21,
+      "reference": "WH/MO/00003",
+      "quantity": 10,
+      "difference": 10,
+      "from": "Production",
+      "to": "WH/Stock",
+      "state": "done"
+    },
+    {
+      "product": "Croissant",
+      "move_id": 23,
+      "reference": "WH/POS/00001",
+      "quantity": 1,
+      "difference": -1,
+      "from": "WH/Stock",
+      "to": "Customers",
+      "state": "done"
+    },
+    {
+      "product": "Coca-Cola 1L",
+      "move_id": 22,
+      "reference": "WH/IN/00001",
+      "quantity": 24,
+      "difference": 24,
+      "from": "Vendors",
+      "to": "WH/Stock",
+      "state": "done"
+    },
+    {
+      "product": "Coca-Cola 1L",
+      "move_id": 24,
+      "reference": "WH/POS/00002",
+      "quantity": 2,
+      "difference": -2,
+      "from": "WH/Stock",
+      "to": "Customers",
+      "state": "done"
+    }
+  ],
+  "verification": {
+    "setup_checks": 35,
+    "document_and_stock_audit_checks": 68,
+    "backend_browser_checks": 12,
+    "pos_browser_checks": 8,
+    "guest_house_records_unchanged": true
+  }
+}

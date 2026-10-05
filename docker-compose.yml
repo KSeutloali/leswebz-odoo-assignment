@@ -1,0 +1,68 @@
+name: leswebz-odoo-assignment
+
+services:
+  db:
+    image: postgres:16@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      ODOO_DB_PASSWORD: ${ODOO_DB_PASSWORD:?Set ODOO_DB_PASSWORD in .env}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - type: bind
+        source: ./config/init-odoo.sh
+        target: /docker-entrypoint-initdb.d/init-odoo.sh
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  odoo:
+    image: odoo:19.0@sha256:dd9013e669caaa23d26765dc55814655eaeecca7cfc2c265dbabae913bce22fd
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+        restart: true
+    environment:
+      HOST: db
+      PORT: "5432"
+      USER: odoo
+      PASSWORD: ${ODOO_DB_PASSWORD:?Set ODOO_DB_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:8069:8069"
+    volumes:
+      - odoo_data:/var/lib/odoo
+      - type: bind
+        source: ./config/odoo.conf
+        target: /etc/odoo/odoo.conf
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./custom-addons
+        target: /mnt/extra-addons
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test:
+        - CMD
+        - python3
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8069/web/health?db_server_status=1', timeout=5).close()"
+      interval: 10s
+      timeout: 6s
+      retries: 12
+      start_period: 30s
+
+volumes:
+  postgres_data:
+  odoo_data:

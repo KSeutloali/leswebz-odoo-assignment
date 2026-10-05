@@ -1,0 +1,23 @@
+{
+    "name": "Thimo Guest House",
+    "version": "19.0.1.2.0",
+    "summary": "Rooms and bookings for Thimo & Sons Guest House",
+    "author": "Thimo Guest House Assignment",
+    "category": "Services",
+    "license": "LGPL-3",
+    "depends": ["base", "web"],
+    "data": [
+        "security/guesthouse_security.xml",
+        "security/ir.model.access.csv",
+        "data/booking_sequence.xml",
+        "views/room_type_views.xml",
+        "views/room_views.xml",
+        "views/booking_views.xml",
+        "views/res_partner_views.xml",
+        "views/guesthouse_menus.xml",
+    ],
+    "demo": ["demo/guesthouse_demo.xml"],
+    "pre_init_hook": "pre_init_hook",
+    "application": True,
+    "installable": True,
+}

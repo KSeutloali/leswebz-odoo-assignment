@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_room_type_receptionist,Room type receptionist,model_thimo_guesthouse_room_type,group_guesthouse_receptionist,1,0,0,0
+access_room_type_manager,Room type manager,model_thimo_guesthouse_room_type,group_guesthouse_manager,1,1,1,1
+access_room_receptionist,Room receptionist,model_thimo_guesthouse_room,group_guesthouse_receptionist,1,0,0,0
+access_room_manager,Room manager,model_thimo_guesthouse_room,group_guesthouse_manager,1,1,1,1
+access_booking_receptionist,Booking receptionist,model_thimo_guesthouse_booking,group_guesthouse_receptionist,1,1,1,0
+access_booking_manager,Booking manager,model_thimo_guesthouse_booking,group_guesthouse_manager,1,1,1,1
