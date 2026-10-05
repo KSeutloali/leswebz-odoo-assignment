@@ -11,8 +11,8 @@ Bakery **35%**, Quality/README/demo **20%**. Bakery receives **7½ minutes** of 
 
 ## Preparation before the clock starts
 
-- Resolve the two release checks in [user acceptance results](user-acceptance-results.md).
-  Until then, describe delivery verification as pending.
+- Review [user acceptance results](user-acceptance-results.md): all 51 mandatory
+  items passed, including the isolated clean installation.
 - Log into the two databases in separate browser profiles. Keep the terminal at
   the project root. Preload Guest House Bookings/Rooms/Room Types, bakery Stock,
   BoM, Manufacturing Orders, Purchase Orders and POS Dashboard.
@@ -59,7 +59,7 @@ Do not create or delete databases during the presentation.
 
 | SCREEN | ACTION | EXPECTED RESULT | WHAT I SHOULD SAY | EVIDENCE TO POINT TO |
 |---|---|---|---|---|
-| Guest House → Rooms; Configuration → Room Types; Guests; Bookings | Show 5 rooms, all 3 types, a fictional Contact and the existing 4 bookings | Requirements of at least 5 rooms / 3 bookings met; types and guest relationships visible | “Guests reuse Odoo Contacts. Room types supply capacity and an LSL nightly rate.” | Standard 450, Deluxe 650, Family 900; four varied booking statuses |
+| Guest House → Rooms; Configuration → Room Types; Guests; Bookings | Show 5 rooms, all 3 types, a fictional Contact and the existing 6 bookings | Requirements of at least 5 rooms / 3 bookings met; types and guest relationships visible | “Guests reuse Odoo Contacts. Room types supply capacity and an LSL nightly rate.” | Standard 450, Deluxe 650, Family 900; varied booking statuses |
 | Bookings → New | Select Demo Guest Bravo, room 101 and a two-night stay with valid dates; Save | Draft; rate LSL 450, 2 nights, total LSL 900; generated reference | “The booking copies the room's default rate and calculates nights and total.” | Saved reference, dates, rate, nights and total |
 | Booking form, then Rooms | Click Confirm; show room 101 | Booking Confirmed; room Reserved | “Confirmation reserves this room. Active overlapping stays are rejected.” | Booking status and room status |
 | Same booking, then Rooms | Click Check In; show room 101 | Booking Checked In; room Occupied | “Check-in records occupancy and updates both records.” | Checked In status and Occupied room |
@@ -117,8 +117,8 @@ assuming no other cash movements. If opening is LSL 51, closing is **LSL 102**.
 A fresh register opened at zero closes at LSL 51. Never assume the existing
 register should open at zero: the previous completed session closed with LSL 51.
 
-If the initial commit/clean installation is still pending, say so plainly; do not
-claim a verified release. Do not display `.env`, local `odoo.conf` or
+Point to the [clean-install report](release-verification-results.md) for the
+verified release. Do not display `.env`, local `odoo.conf` or
 `database-admins.json`. Show `.env.example` and `odoo.conf.example` instead.
 
 ## Quantity worksheet

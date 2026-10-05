@@ -55,7 +55,9 @@ leswebz-odoo-assignment/
 ## Installation
 
 The source repository is private; GitHub access is required to clone it.
-A fresh-clone installation has not been verified.
+The installation was verified from GitHub commit `8b1313e` on 5 October 2026
+using fresh credentials and separate storage. See the
+[clean-install report](docs/release-verification-results.md).
 
 ```bash
 git clone https://github.com/KSeutloali/leswebz-odoo-assignment.git leswebz-odoo-assignment
@@ -188,8 +190,8 @@ Contacts and five bookings. Standard rooms 101/102 cost LSL 450 nightly; Deluxe
 201/202 cost LSL 650; Family 301 costs LSL 900. Dates are relative to first load.
 Complete samples are preserved on repeat loads; partial/deleted samples require
 review rather than automatic replacement. **The current live dataset has five
-rooms, four guests and four bookings** after an original draft and its guest
-were removed.
+rooms, five guest Contacts and six bookings** as of the release check on
+5 October 2026. Existing records were preserved during verification.
 
 Workflow: **Draft → Confirmed → Checked In → Checked Out**.
 Room states: **Available → Reserved → Occupied → Available**.
@@ -249,6 +251,8 @@ The completed demonstration has one Done MO, one confirmed PO, one Done receipt,
 two Posted POS orders and one Closed & Posted session: LSL 51 cash, zero difference.
 Final stock: Flour 9 kg, Sugar 1.80 kg, Yeast 0.45 kg, Croissant 9 Units, Coca-Cola
 22 Units. Actual Done moves and payments were audited after restart.
+On a fresh installation, setup stops before sales: open POS and complete the
+two sales and cash reconciliation described below to reach these final balances.
 
 ## Demo Procedure
 
@@ -259,7 +263,8 @@ Final stock: Flour 9 kg, Sugar 1.80 kg, Yeast 0.45 kg, Croissant 9 Units, Coca-C
    Demonstrate Cancel on a separate confirmed booking.
 4. Log into `vishanti_bakery`. Show BoM `VBAK-CROISSANT-10`, Done MO
    `WH/MO/00003`, PO `P00001`, receipt `WH/IN/00001`, POS orders, their linked
-   deliveries and current stock/movement history.
+   deliveries and current stock/movement history. Generated document references
+   differ on a fresh installation; select the documents created by setup.
 5. On a **fresh bakery setup**, open Vishanti Bakery in POS with zero cash, sell
    1 Croissant and 2 Coca-Cola in separate Cash orders, and Validate each.
    Close with LSL 51 counted cash. Further sales change the existing baseline.
@@ -285,7 +290,8 @@ require reviewing expected values. See [system results](docs/system-test-results
 [Guest House results](docs/guesthouse-test-results.md),
 [bakery results](docs/bakery-test-results.md) and the
 [bakery assessment guide](docs/bakery-assessment-guide.md). Earlier reports
-describe their original test datasets; the system report records the current state.
+describe their original test datasets; the
+[release report](docs/release-verification-results.md) records the final check.
 
 For assessment, use the [acceptance checklist](docs/user-acceptance-results.md),
 [14-minute live demonstration plan](docs/live-demonstration-plan.md) and
@@ -319,8 +325,8 @@ user and must remain ignored; restrict access appropriately on a shared machine.
 
 The review found no known local credentials or common private-key/API-token
 patterns in Git-visible files and committed source. No sensitive file is tracked.
-The source repository is hosted on GitHub. Fresh-clone installation verification
-remains pending.
+The source repository is hosted on GitHub. Its fresh-clone installation passed,
+including Guest House tests and actual standard bakery POS sales.
 
 PostgreSQL is not published, and Odoo binds to localhost. Avoid sharing full
 `docker compose config` output because it resolves passwords; validate using

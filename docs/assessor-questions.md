@@ -32,7 +32,8 @@ Source/evidence:
 [bakery stock/payment evidence](bakery-evidence.json),
 [acceptance checklist](user-acceptance-results.md).
 
-Current release answer if asked: **the runtime requirements passed; the complete
-README installation and fresh setup reproduction remain unverified.** The Git
-worktree and initial commit exist; the final documentation commit and actual
-clone source are pending.
+Current release answer if asked: **all 51 mandatory acceptance items passed.**
+The private GitHub repository was cloned at `8b1313e`, and the documented setup
+was verified with fresh credentials, separate volumes and actual POS sales.
+The working databases were preserved. See the
+[clean-install and final release report](release-verification-results.md).

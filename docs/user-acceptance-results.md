@@ -1,28 +1,35 @@
 # User acceptance and release assessment
 
 Assessed on **5 October 2026** against the original assignment only:
-**49 PASS / 0 FAIL / 2 NOT VERIFIED** across **51 items**.
+**51 PASS / 0 FAIL / 0 NOT VERIFIED** across **51 items**.
 
-**RELEASE READINESS NOT DECLARED.** The two incomplete delivery checks are the
-complete README installation command sequence and fresh setup reproduction.
-There is no verified mandatory business-workflow failure.
+**READY FOR SUBMISSION.** The README installation and fresh setup checks passed
+against an actual GitHub clone. No mandatory requirement remains incomplete.
 
 ## Verification basis
 
-This final pass was non-destructive: Compose validation, service health, HTTP
-health, live database queries, Guest House registry/model/form loading, the
-68-check read-only bakery audit, Git/secret checks and README syntax/link review.
-No database reset, volume removal, restart, module upgrade or new persistent
-demo transaction was performed.
+The working deployment received read-only checks: Compose validation, service and
+HTTP health, live database queries, Guest House registry/model/form loading,
+the 68-check bakery audit, Git/secret checks and README syntax/link review.
+Its databases were not reset, upgraded or restarted, and no new persistent
+business transactions were created there. No volumes were removed.
 
-Earlier actual tests are reused explicitly where indicated: **60 Guest House
-live ORM checks**, **20 Guest House browser checks**, **12 bakery browser checks**
-and the executed persistence restart. This pass confirmed that the Guest House
-room types, rooms and booking table checksums still match that tested dataset.
-The bakery audit passed all 68 checks again against current documents and quants.
-No PASS below is based solely on source presence for a required behaviour.
+The private GitHub source was cloned at **8b1313e** and installed using fresh
+credentials, a separate Compose project, separate volumes and localhost:18069.
+This clean installation passed **60 Guest House ORM checks**, **20 Guest House
+browser checks**, **35 bakery setup checks**, actual frontend POS sales and
+**68 bakery audit checks**. New setup/sale records were confined to that
+validation deployment, which was stopped afterward with its volumes retained.
+
+The earlier executed persistence restart and bakery backend browser checks are
+reused explicitly. Original Guest House type, room and booking checksums were
+identical before/after the isolated verification. The original bakery retained
+its posted documents and stock balances. No behavioural PASS is based only on
+source presence.
 
 Evidence:
+[clean-install report](release-verification-results.md),
+[clean-install expected/actual JSON](release-verification-evidence.json),
 [system report](system-test-results.md),
 [system expected/actual JSON](system-test-evidence.json),
 [Guest House results](guesthouse-test-results.md),
@@ -36,9 +43,9 @@ Evidence:
 | Odoo runs locally | PASS | Fresh health request returned pass at localhost:8069; Odoo service healthy. |
 | PostgreSQL runs locally | PASS | db service healthy; fresh queries and both Odoo registries connected successfully. |
 | Docker Compose works | PASS | Fresh docker compose config --quiet exited 0; docker compose ps succeeded. |
-| Developer Mode available | PASS | Earlier actual browser verification: odoo.debug = 1 and developer menu rendered; 20 house browser checks passed. |
+| Developer Mode available | PASS | Fresh browser verification: odoo.debug = 1 and developer menu rendered; 20 house browser checks passed. |
 | custom-addons exists | PASS | Host custom-addons/thimo_guesthouse exists; container sees the manifest at /mnt/extra-addons. |
-| Git repository exists | PASS | git rev-parse returned true; initial commit 21d7f46 now exists. No remote is configured. |
+| Git repository exists | PASS | Repository has two commits, HEAD 8b1313e and a private GitHub origin; actual HTTPS clone succeeded. |
 | Persistence works after restart | PASS | Earlier actual down/up test: all 23 sampled tables and both filestores unchanged; both volumes retained. Not repeated in this non-destructive pass. |
 
 ## Databases
@@ -53,18 +60,18 @@ Evidence:
 
 | ITEM | RESULT | ACTUAL EVIDENCE |
 |---|---|---|
-| Guest supported | PASS | Four current fictional res.partner guest Contacts; is_guest field exists in the live registry. |
+| Guest supported | PASS | Five current res.partner guest Contacts; guest field exists in the live registry. Fresh demo also created five fictional guests. |
 | Room supported | PASS | Five live room records; room model loaded. |
 | Room Type supported | PASS | Standard, Deluxe and Family records; room-type model loaded. |
 | Rate supported | PASS | Live defaults LSL 450 / 650 / 900; booking rate, nights and total verified in the 60-check live suite. |
-| Booking supported | PASS | Four current records; live booking model and form view load. |
+| Booking supported | PASS | Six current records; live booking model and form view load. Fresh demo created five samples. |
 | At least 5 rooms | PASS | Fresh actual count: 5. |
-| At least 3 bookings | PASS | Fresh actual count: 4. |
-| Booking confirmation works | PASS | Prior live TEST 2: confirmed / reserved; temporary writes rolled back. |
-| Check-in works | PASS | Prior live TEST 3: checked_in / occupied. |
-| Room becomes occupied | PASS | Prior live check-in observed occupied; current room 201 also occupied. |
-| Check-out works | PASS | Prior live TEST 4: checked_out / available. |
-| Room becomes available | PASS | Prior live checkout observed available with no remaining reservation; current room 101 available. |
+| At least 3 bookings | PASS | Fresh actual count on the working deployment: 6. |
+| Booking confirmation works | PASS | Clean-install TEST 2: confirmed / reserved; temporary writes rolled back. |
+| Check-in works | PASS | Clean-install TEST 3: checked_in / occupied. |
+| Room becomes occupied | PASS | Clean-install check-in observed occupied; working room 201 also occupied. |
+| Check-out works | PASS | Clean-install TEST 4: checked_out / available. |
+| Room becomes available | PASS | Clean-install checkout observed available with no remaining reservation; working room 101 available. |
 | Booking statuses update correctly | PASS | Live suite observed draft → confirmed → checked_in → checked_out, plus confirmed → cancelled; invalid transitions rejected. |
 
 ## Bakery applications
@@ -111,9 +118,9 @@ Evidence:
 |---|---|---|
 | Source/custom module present | PASS | Manifest, package, models, security, XML views, sequence, demo and tests present; registry imports and form load. |
 | README present | PASS | README.md exists with the requested title and all 14 sections. |
-| README commands verified | NOT VERIFIED | All 12 Bash blocks parse and local paths resolve; runtime/setup commands have evidence, but git clone REPOSITORY_URL remains a placeholder and has not run. |
+| README commands verified | PASS | Actual GitHub clone and documented database/module/setup/POS/audit steps passed on clean storage; 12 Bash blocks parse and local links resolve. Validation used an isolated project and port; earlier upgrade/restart commands have actual test evidence. |
 | No secrets committed | PASS | Private files ignored and untracked. Known-credential and common-token/private-key scans clear in working source, index and committed history. |
-| Setup reproducible | NOT VERIFIED | Source, pinned images, templates and setup scripts exist and were used locally; a complete fresh-copy/clone installation has not been exercised. |
+| Setup reproducible | PASS | Cloned source at 8b1313e installed from templates with fresh passwords and volumes: two databases, custom Guest House, four standard bakery apps, manufacture, receipt and paid POS deliveries verified. |
 
 ## Final non-destructive release check
 
@@ -121,39 +128,27 @@ Evidence:
 |---|---|---|
 | docker compose config --quiet | Exit 0; avoids printing resolved credentials | PASS |
 | docker compose ps | db and odoo healthy; Odoo published only at 127.0.0.1:8069 | PASS |
-| Git status | Initial commit 21d7f46 contains 41 source files; final README, acceptance report and assessor-answer updates remain uncommitted; no remote; sensitive paths ignored | PASS inspection; final documentation handoff pending |
+| Git status | HEAD 8b1313e; actual private origin; only final documentation/evidence changes pending the suggested commit; sensitive paths ignored | PASS |
 | Module loads | Three custom models registered; partner guest field present; actual booking form architecture loads | PASS |
 | Databases accessible | Both queried through PostgreSQL; both Odoo registries successfully used | PASS |
-| Mandatory workflows verified | Prior live house state tests; current posted bakery document/stock audit | PASS |
-| README accuracy | Current versions, services, quantities, limits and credential handling accurate; clone placeholder disclosed | PASS accuracy; full installation NOT VERIFIED |
+| Mandatory workflows verified | Fresh house lifecycle, constraints and security; fresh manufacturing, purchasing, POS frontend sales and posted stock audit | PASS |
+| README accuracy | Actual clone URL, current versions, services, counts, quantities, limits and credential handling reviewed; clean install verified | PASS |
 | Secrets absent from submission source | Known credentials scan clear; private inputs/backups ignored; no sensitive file tracked | PASS scoped review |
-| Recent service logs | Successful health requests and normal PostgreSQL checkpoints; no unexpected errors observed | PASS |
+| Recent service logs | Working services have no recent warnings/errors. Fresh installation recovered from a shutdown-interrupted standard cleanup job; explicit rerun passed, with no subsequent unexpected errors | PASS |
 
-The Git repository **exists**, and the initial source commit was created during
-this review, so that original checkbox passes. A hosted remote, tag, backup restore test and computer
-reboot are not independent mandatory items in the original assignment. The
-current README nevertheless starts with a clone placeholder, and there is no
-verified clean installation, so the two delivery checks remain open.
+## Release handoff
 
-## Remaining release work
+No mandatory item remains incomplete. Suggested final commit:
+`docs: finalize acceptance and verify clean installation`.
+Optional tag after that commit: `v1.0.0`. This review did not commit, push or tag.
+A backup restore exercise and full computer reboot are outside the original
+mandatory checklist and are not claimed as tested here.
 
-1. Commit the final README/report updates. Initial source commit **21d7f46** was
-   created during this review; this agent did not change the Git index or create
-   that commit. A checkout now contains the application source.
-2. Supply an actual clone source and replace README's `REPOSITORY_URL` placeholder.
-   A hosted remote can provide this; a supplied local Git repository is another
-   valid handoff.
-3. Exercise the documented installation using fresh local credentials and
-   separate clean storage, preserving the existing two working databases.
-   Verify both databases, module installation, bakery setup and workflows there.
-4. Record that result, then reassess the two NOT VERIFIED items.
-
-These are delivery gaps; no architecture redesign or additional business feature
-is required. The working Guest House currently has **5 rooms / 4 bookings**.
+The working Guest House currently has **5 rooms / 6 bookings / 5 guest Contacts**.
 Bakery stock remains **Flour 9 kg / Sugar 1.80 kg / Yeast 0.45 kg /
 Croissant 9 Units / Coca-Cola 22 Units**.
 
-## Submission contents after verification
+## Submission contents
 
 Include:
 
