@@ -34,4 +34,5 @@ Source/evidence:
 
 Current release answer if asked: **the runtime requirements passed; the complete
 README installation and fresh setup reproduction remain unverified.** The Git
-worktree exists, but the initial commit and actual clone source are pending.
+worktree and initial commit exist; the final documentation commit and actual
+clone source are pending.

@@ -38,7 +38,7 @@ Evidence:
 | Docker Compose works | PASS | Fresh docker compose config --quiet exited 0; docker compose ps succeeded. |
 | Developer Mode available | PASS | Earlier actual browser verification: odoo.debug = 1 and developer menu rendered; 20 house browser checks passed. |
 | custom-addons exists | PASS | Host custom-addons/thimo_guesthouse exists; container sees the manifest at /mnt/extra-addons. |
-| Git repository exists | PASS | Fresh git rev-parse --is-inside-work-tree returned true. No commit or remote exists yet. |
+| Git repository exists | PASS | git rev-parse returned true; initial commit 21d7f46 now exists. No remote is configured. |
 | Persistence works after restart | PASS | Earlier actual down/up test: all 23 sampled tables and both filestores unchanged; both volumes retained. Not repeated in this non-destructive pass. |
 
 ## Databases
@@ -112,7 +112,7 @@ Evidence:
 | Source/custom module present | PASS | Manifest, package, models, security, XML views, sequence, demo and tests present; registry imports and form load. |
 | README present | PASS | README.md exists with the requested title and all 14 sections. |
 | README commands verified | NOT VERIFIED | All 12 Bash blocks parse and local paths resolve; runtime/setup commands have evidence, but git clone REPOSITORY_URL remains a placeholder and has not run. |
-| No secrets committed | PASS | No commits or tracked files; private files ignored. Fresh known-credential scan clear; prior common-token/private-key scan clear. |
+| No secrets committed | PASS | Private files ignored and untracked. Known-credential and common-token/private-key scans clear in working source, index and committed history. |
 | Setup reproducible | NOT VERIFIED | Source, pinned images, templates and setup scripts exist and were used locally; a complete fresh-copy/clone installation has not been exercised. |
 
 ## Final non-destructive release check
@@ -121,7 +121,7 @@ Evidence:
 |---|---|---|
 | docker compose config --quiet | Exit 0; avoids printing resolved credentials | PASS |
 | docker compose ps | db and odoo healthy; Odoo published only at 127.0.0.1:8069 | PASS |
-| Git status | Valid worktree; all source untracked, no commits, no remote; sensitive paths ignored | PASS inspection; handoff pending |
+| Git status | Initial commit 21d7f46 contains 41 source files; final README, acceptance report and assessor-answer updates remain uncommitted; no remote; sensitive paths ignored | PASS inspection; final documentation handoff pending |
 | Module loads | Three custom models registered; partner guest field present; actual booking form architecture loads | PASS |
 | Databases accessible | Both queried through PostgreSQL; both Odoo registries successfully used | PASS |
 | Mandatory workflows verified | Prior live house state tests; current posted bakery document/stock audit | PASS |
@@ -129,15 +129,17 @@ Evidence:
 | Secrets absent from submission source | Known credentials scan clear; private inputs/backups ignored; no sensitive file tracked | PASS scoped review |
 | Recent service logs | Successful health requests and normal PostgreSQL checkpoints; no unexpected errors observed | PASS |
 
-The Git repository **exists**, so that original checkbox passes even though the
-source is not committed. A hosted remote, tag, backup restore test and computer
+The Git repository **exists**, and the initial source commit was created during
+this review, so that original checkbox passes. A hosted remote, tag, backup restore test and computer
 reboot are not independent mandatory items in the original assignment. The
 current README nevertheless starts with a clone placeholder, and there is no
 verified clean installation, so the two delivery checks remain open.
 
 ## Remaining release work
 
-1. Commit the reviewed source so a repository checkout includes the application.
+1. Commit the final README/report updates. Initial source commit **21d7f46** was
+   created during this review; this agent did not change the Git index or create
+   that commit. A checkout now contains the application source.
 2. Supply an actual clone source and replace README's `REPOSITORY_URL` placeholder.
    A hosted remote can provide this; a supplied local Git repository is another
    valid handoff.

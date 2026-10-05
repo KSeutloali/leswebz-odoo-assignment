@@ -54,12 +54,11 @@ leswebz-odoo-assignment/
 
 ## Installation
 
-**Repository handoff is pending:** this workspace has no commits or remote.
-Replace `REPOSITORY_URL` below with the actual published URL after committing and
-publishing the project. A fresh-clone installation has not been verified.
+The source repository is private; GitHub access is required to clone it.
+A fresh-clone installation has not been verified.
 
 ```bash
-git clone REPOSITORY_URL leswebz-odoo-assignment
+git clone https://github.com/KSeutloali/leswebz-odoo-assignment.git leswebz-odoo-assignment
 cd leswebz-odoo-assignment
 cp .env.example .env
 cp config/odoo.conf.example config/odoo.conf
@@ -319,9 +318,9 @@ environment/login files have mode 600. Odoo config is readable for the container
 user and must remain ignored; restrict access appropriately on a shared machine.
 
 The review found no known local credentials or common private-key/API-token
-patterns in Git-visible files. No sensitive file is tracked. **No commits or
-tracked project files exist yet**; commit the reviewed source before repository
-submission. The remote URL and fresh-clone reproduction remain pending.
+patterns in Git-visible files and committed source. No sensitive file is tracked.
+The source repository is hosted on GitHub. Fresh-clone installation verification
+remains pending.
 
 PostgreSQL is not published, and Odoo binds to localhost. Avoid sharing full
 `docker compose config` output because it resolves passwords; validate using
